@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>Debounce Function!</h1>
+    <input id="debounce-input" type="text" onkeyup="debouncedKeyUp(this)" />
+
+    <script>
+      function keyUp(e) {
+        console.log(e.value);
+      }
+      function debounce(fn) {
+        let timer;
+        return (...args) => {
+          if (timer) {
+            clearTimeout(timer);
+          }
+          timer = setTimeout(() => {
+            fn(...args);
+          }, 1000);
+        };
+      }
+      const debouncedKeyUp = debounce(keyUp);
+    </script>
+  </body>
+</html>
